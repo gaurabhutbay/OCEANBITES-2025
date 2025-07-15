@@ -3,12 +3,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBdauJGLn281-93lI7njgq47HeU4b2ntTQ",
-  authDomain: "ocean-bites-30ecc.firebaseapp.com",
-  projectId: "ocean-bites-30ecc",
-  storageBucket: "ocean-bites-30ecc.appspot.com",
-  messagingSenderId: "744209164728",
-  appId: "1:744209164728:web:2be19057cebd0cd632474d"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
