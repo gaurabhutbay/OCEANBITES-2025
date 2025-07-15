@@ -12,14 +12,14 @@ function App() {
   const [isAdminView, setIsAdminView] = useState(false);
 
   const groupedProducts = {
-    "Fish Products": [
+    "Fishies": [
       { name: "Fish Cutlet", price: 20, image: require("./assets/fish_cutlet.jpeg") },
       { name: "Fish Momos", price: 15, image: require("./assets/fish_momos.jpeg") },
       { name: "Fish Somas", price: 15, image: require("./assets/fish_somas.jpeg") },
       { name: "Fish 65", price: 20, image: require("./assets/fish_65.jpeg") },
       { name: "Fish Pickle 100g", price: 50, image: require("./assets/fish_pickle.jpeg") }
     ],
-    "Shrimp Products": [
+    "Shrimpies": [
       { name: "Shrimp Shawarma", price: 60, image: require("./assets/shrimp_shawarma.jpeg") },
       { name: "Shrimp Cutlet", price: 25, image: require("./assets/shrimp_cutlet.jpeg") },
       { name: "Shrimp Pickle 100g", price: 50, image: require("./assets/shrimp_pickle.jpeg") }
