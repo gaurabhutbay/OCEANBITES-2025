@@ -3,6 +3,7 @@ import db from "./firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import Admin from "./Admin";
 import "./App.css";
+import { useEffect } from "react"
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -10,6 +11,18 @@ function App() {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [isAdminView, setIsAdminView] = useState(false);
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === "A") {
+        const code = prompt("Enter admin code:");
+        if (code === "admin123") {
+          setIsAdminView(true);
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
 
   const groupedProducts = {
     "Fishies": [
@@ -22,7 +35,8 @@ function App() {
     "Shrimpies": [
       { name: "Shrimp Shawarma", price: 60, image: require("./assets/shrimp_shawarma.jpeg") },
       { name: "Shrimp Cutlet", price: 25, image: require("./assets/shrimp_cutlet.jpeg") },
-      { name: "Shrimp Pickle 100g", price: 50, image: require("./assets/shrimp_pickle.jpeg") }
+      { name: "Shrimp Pickle 100g", price: 50, image: require("./assets/shrimp_pickle.jpeg") },
+      { name: "Shrimp ", price: 50, image: require("./assets/shrimp_pickle.jpeg") }
     ],
     "Juices": [
       { name: "Blue Curacao Mojito", price: 40, image: require("./assets/blue.jpeg") },
@@ -119,18 +133,16 @@ function App() {
   return (
     <>
       <div className="app-container">
-        <button
-          onClick={() => setIsAdminView(!isAdminView)}
-          className="mb-4 bg-gray-800 text-white px-4 py-2 rounded w-full"
-        >
-          Switch to {isAdminView ? "Customer" : "Admin"} View
-        </button>
+
 
         {isAdminView ? (
           <Admin />
         ) : (
           <>
-            <h1 className="text-3xl font-bold">Ocean Bites</h1>
+            <div className="brand-heading">
+              <span className="ocean-text">OCEAN</span>
+              <span className="bites-text">Bites</span>
+            </div>
 
             {Object.entries(groupedProducts).map(([category, items]) => (
               <div key={category}>
