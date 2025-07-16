@@ -1,7 +1,7 @@
 /* 🌊 Background + Base styles */
 body {
   font-family: 'Montserrat', sans-serif;
-  background-image: url("../public/ocean.jpg");
+  background-image: url("/public/ocean.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -40,16 +40,14 @@ h2 {
   overflow-x: auto;
   gap: 0.75rem;
   padding-bottom: 0.5rem;
-  scrollbar-width: none;
-  /* Firefox */
+  scrollbar-width: none; /* Firefox */
 }
 
 .product-scroll::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari, Edge */
+  display: none; /* Chrome, Safari, Edge */
 }
 
-/* 🛍️ Product Card (if you use it via class, optional) */
+/* 🛍️ Product Card */
 .product-card {
   min-width: 140px;
   max-width: 140px;
@@ -59,7 +57,7 @@ h2 {
   transition: transform 0.2s ease;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  font-family: 'Monstserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .product-card:hover {
@@ -153,7 +151,7 @@ button:hover {
 .ocean-text {
   font-size: 2.5rem;
   font-weight: 800;
-  background: url('/ocean.jpg') center/cover;
+  background: url("/public/ocean.jpg") center/cover;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -170,6 +168,7 @@ button:hover {
   color: #007BFF;
 }
 
+/* 📱 Responsive tweaks */
 @media (max-width: 480px) {
   .brand-heading {
     padding: 8px 14px;
