@@ -49,7 +49,7 @@ export default function Home() {
                     alt={product.name}
                     className="w-full h-32 object-cover rounded-xl mb-2"
                   />
-                  <h3 className="font-semibold text-lg">{product.name}</h3>
+                 <h3 className="font-semibold text-lg">{product.name}</h3>
                   <p className="text-sm text-gray-700">₹{product.price}</p>
                   <Button className="mt-1 w-full bg-blue-600 hover:bg-blue-700 text-white">
                     Add

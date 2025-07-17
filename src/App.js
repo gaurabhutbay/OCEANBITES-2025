@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import db from "./firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import Admin from "./Admin";
 import "./App.css";
-import { useEffect } from "react"
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -11,6 +10,8 @@ function App() {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [isAdminView, setIsAdminView] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === "A") {
@@ -25,25 +26,25 @@ function App() {
   }, []);
 
   const groupedProducts = {
-    "Fishies": [
+    Fishies: [
       { name: "Fish Cutlet", price: 20, image: require("./assets/fish_cutlet.jpeg") },
       { name: "Fish Momos", price: 15, image: require("./assets/fish_momos.jpeg") },
       { name: "Fish Somas", price: 15, image: require("./assets/fish_somas.jpeg") },
       { name: "Fish 65", price: 20, image: require("./assets/fish_65.jpeg") },
       { name: "Fish Pickle 100g", price: 50, image: require("./assets/fish_pickle.jpeg") }
     ],
-    "Shrimpies": [
+    Shrimpies: [
       { name: "Shrimp Shawarma", price: 60, image: require("./assets/shrimp_shawarma.jpeg") },
       { name: "Shrimp Cutlet", price: 25, image: require("./assets/shrimp_cutlet.jpeg") },
       { name: "Shrimp Pickle 100g", price: 50, image: require("./assets/shrimp_pickle.jpeg") },
-      { name: "Shrimp ", price: 50, image: require("./assets/shrimp_pickle.jpeg") }
+      { name: "Shrimp", price: 50, image: require("./assets/shrimp_pickle.jpeg") }
     ],
-    "Juices": [
+    Juices: [
       { name: "Blue Curacao Mojito", price: 40, image: require("./assets/blue.jpeg") },
       { name: "Green Apple Mojito", price: 40, image: require("./assets/green.jpeg") },
       { name: "Strawberry Mojito", price: 40, image: require("./assets/berry.jpeg") }
     ],
-    "Bowls": [
+    Bowls: [
       { name: "Fish Fried Rice", price: 120, image: require("./assets/fish_rice.jpeg") },
       { name: "Shrimp Fried Rice", price: 140, image: require("./assets/shrimp_rice.jpeg") },
       { name: "Veg Fried Rice", price: 90, image: require("./assets/veg_rice.jpeg") },
@@ -83,6 +84,10 @@ function App() {
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
     }
+
+    // 👇 Show popup for 5 seconds
+    setShowPopup(true);
+    setTimeout(() => setShowPopup(false), 5000);
   };
 
   const incrementQuantity = (index) => {
@@ -133,7 +138,6 @@ function App() {
   return (
     <>
       <div className="app-container">
-
 
         {isAdminView ? (
           <Admin />
@@ -201,6 +205,37 @@ function App() {
             </div>
           </>
         )}
+      </div>
+
+      {/* ✅ Popup message */}
+      {showPopup && (
+        <div style={{
+          position: "fixed",
+          bottom: "80px",
+          right: "20px",
+          background: "#007BFF",
+          color: "white",
+          padding: "12px 20px",
+          borderRadius: "10px",
+          boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+          zIndex: 1000
+        }}>
+          🛒 Added to Cart Below!
+        </div>
+      )}
+
+      {/* ✅ Floating Cart Icon */}
+      <div style={{
+        position: "fixed",
+        bottom: "20px",
+        right: "20px",
+        background: "#ffffff",
+        padding: "10px",
+        borderRadius: "50%",
+        boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+        zIndex: 1000
+      }}>
+        <span role="img" aria-label="cart">🛍️</span>
       </div>
     </>
   );
