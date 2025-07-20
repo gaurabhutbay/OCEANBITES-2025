@@ -1,14 +1,6 @@
-<header className="header-bar">
-  <img src="./assets/logo.png" alt="Ocean Bites Logo" className="logo-img" />
-  <div className="hamburger-menu" onClick={() => setMenuOpen(!menuOpen)}>
-    &#9776;
-  </div>
-</header>
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import db from "./firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import Admin from "./Admin";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Mainpage from "./Mainpage";
@@ -19,9 +11,8 @@ function App() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [isAdminView, setIsAdminView] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [, setIsAdminView] = useState(false);
 
   useEffect(() => {
     const handleKey = (e) => {
@@ -96,7 +87,6 @@ function App() {
       setCart([...cart, { ...product, quantity: 1 }]);
     }
 
-    // 👇 Show popup for 5 seconds
     setShowPopup(true);
     setTimeout(() => setShowPopup(false), 5000);
   };
@@ -148,6 +138,8 @@ function App() {
 
   return (
     <Router>
+  
+
       <Routes>
         <Route
           path="/"
