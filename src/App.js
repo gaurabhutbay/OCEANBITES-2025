@@ -1,8 +1,18 @@
-import React, { useState, useEffect } from "react";
+<header className="header-bar">
+  <img src="./assets/logo.png" alt="Ocean Bites Logo" className="logo-img" />
+  <div className="hamburger-menu" onClick={() => setMenuOpen(!menuOpen)}>
+    &#9776;
+  </div>
+</header>
+
+import { useState, useEffect } from "react";
 import db from "./firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import Admin from "./Admin";
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Mainpage from "./Mainpage";
+import About from "./About";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -11,6 +21,7 @@ function App() {
   const [address, setAddress] = useState("");
   const [isAdminView, setIsAdminView] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleKey = (e) => {
@@ -136,108 +147,32 @@ function App() {
   };
 
   return (
-    <>
-      <div className="app-container">
-
-        {isAdminView ? (
-          <Admin />
-        ) : (
-          <>
-            <div className="brand-heading">
-              <span className="ocean-text">OCEAN</span>
-              <span className="bites-text">Bites</span>
-            </div>
-
-            {Object.entries(groupedProducts).map(([category, items]) => (
-              <div key={category}>
-                <h2>{category}</h2>
-                <div className="product-scroll scrollbar-hide">
-                  {items.map((product, idx) => (
-                    <div key={idx} className="product-card">
-                      <img src={product.image} alt={product.name} />
-                      <p className="mt-1 text-[13px] font-semibold text-center">{product.name}</p>
-                      <p className="text-xs text-gray-500 text-center">₹{product.price}</p>
-                      <button onClick={() => addToCart(product)}>Add</button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-
-            <div className="cart-section">
-              <h2>Your Cart</h2>
-              {cart.length === 0 ? (
-                <p className="text-gray-600">Cart is empty.</p>
-              ) : (
-                cart.map((item, index) => (
-                  <div key={index} className="cart-item">
-                    <span>{item.name}</span>
-                    <div className="flex gap-2 items-center">
-                      <button className="qty-btn minus" onClick={() => decrementQuantity(index)}>-</button>
-                      <span>{item.quantity}</span>
-                      <button className="qty-btn" onClick={() => incrementQuantity(index)}>+</button>
-                    </div>
-                  </div>
-                ))
-              )}
-              <h3>Total: ₹{getTotal()}</h3>
-
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Delivery Address"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-
-              <button onClick={handlePayment}>Place Order</button>
-            </div>
-          </>
-        )}
-      </div>
-
-      {/* ✅ Popup message */}
-      {showPopup && (
-        <div style={{
-          position: "fixed",
-          bottom: "80px",
-          right: "20px",
-          background: "#007BFF",
-          color: "white",
-          padding: "12px 20px",
-          borderRadius: "10px",
-          boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
-          zIndex: 1000
-        }}>
-          🛒 Added to Cart Below!
-        </div>
-      )}
-
-      {/* ✅ Floating Cart Icon */}
-      <div style={{
-        position: "fixed",
-        bottom: "20px",
-        right: "20px",
-        background: "#ffffff",
-        padding: "10px",
-        borderRadius: "50%",
-        boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-        zIndex: 1000
-      }}>
-        <span role="img" aria-label="cart">🛍️</span>
-      </div>
-    </>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Mainpage
+              groupedProducts={groupedProducts}
+              addToCart={addToCart}
+              cart={cart}
+              decrementQuantity={decrementQuantity}
+              incrementQuantity={incrementQuantity}
+              getTotal={getTotal}
+              name={name}
+              setName={setName}
+              phone={phone}
+              setPhone={setPhone}
+              address={address}
+              setAddress={setAddress}
+              handlePayment={handlePayment}
+              showPopup={showPopup}
+            />
+          }
+        />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
   );
 }
 

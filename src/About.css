@@ -1,0 +1,68 @@
+.about-page {
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c3e50;
+  padding-bottom: 40px;
+  background: white;
+}
+
+.about-header {
+  background-image: url(/public/ocean.jpg);
+  text-align: center;
+  padding: 40px 0;
+  margin-bottom: 20px;
+}
+
+.about-header h1 {
+  color: white;
+  font-size: 32px;
+  border: 3px solid white;
+  display: inline-block;
+  padding: 10px 30px;
+  font-weight: bold;
+}
+
+.about-section {
+  padding: 20px;
+  text-align: center;
+}
+
+.about-section h2 {
+  color: #154734;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.about-section p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.image-and-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.factory-image {
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .about-header h1 {
+    font-size: 24px;
+    padding: 8px 20px;
+  }
+
+  .about-section h2 {
+    font-size: 20px;
+  }
+
+  .about-section p {
+    font-size: 15px;
+  }
+}

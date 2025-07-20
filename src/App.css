@@ -34,17 +34,48 @@ h2 {
   color: #333;
 }
 
+.category-heading-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.category-heading {
+  background: rgba(230, 250, 255, 0.5);
+  padding: 10px 16px;
+  color: white;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+  backdrop-filter: blur(3px);
+}
+
+.category-divider {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+  margin: 5px 0 15px 0;
+  width: 100%;
+}
+
 /* 🛒 Product scrollable section */
 .product-scroll {
   display: flex;
   overflow-x: auto;
   gap: 0.75rem;
   padding-bottom: 0.5rem;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .product-scroll::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+  display: none;
+  /* Chrome, Safari, Edge */
 }
 
 /* 🛍️ Product Card */
@@ -58,6 +89,33 @@ h2 {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   font-family: 'Montserrat', sans-serif;
+}
+
+.order-inputs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 20px auto;
+}
+
+.order-input {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+.order-input:focus {
+  border-color: #007aff;
+  box-shadow: 0 0 4px rgba(0, 122, 255, 0.4);
+}
+
+.floating-cart-icon:hover {
+  background-color: #0051c2;
 }
 
 .product-card:hover {
@@ -81,7 +139,7 @@ h2 {
 .cart-item {
   display: flex;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.829);
+  background: rgba(245, 248, 248, 0.829);
   backdrop-filter: blur(4px);
   border-radius: 10px;
   padding: 0.75rem;
@@ -147,48 +205,90 @@ button:hover {
 
 /* 🌊 Brand Heading Styles */
 .brand-heading {
-  text-align: center;
-  margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 1.5rem auto;
   background: rgba(255, 255, 255, 0.35);
   padding: 10px 20px;
   border-radius: 15px;
-  display: inline-block;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6px);
+  max-width: fit-content;
 }
 
-.ocean-text {
+.ocean-text,
+.bites-text {
   font-size: 2.5rem;
   font-weight: 800;
-  background: url("/public/ocean.jpg") center/cover;
+  background: url("/public/heading.jpg") center/cover;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-  display: inline-block;
-  margin-right: 10px;
-  letter-spacing: 2px;
-  text-shadow: 0 0 5px rgba(0, 132, 235, 0.5);
-}
-
-.bites-text {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.3rem;
-  color: #007BFF;
+  text-shadow: 0 0 5px rgba(247, 252, 255, 0.5);
 }
 
 /* 📱 Responsive tweaks */
 @media (max-width: 480px) {
   .brand-heading {
     padding: 8px 14px;
+    flex-direction: column;
   }
 
-  .ocean-text {
-    font-size: 1.8rem;
-    letter-spacing: 1px;
-  }
-
+  .ocean-text,
   .bites-text {
-    font-size: 1.7rem;
+    font-size: 2rem;
+    text-align: center;
   }
+}
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007BFF;
+  padding: 10px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-img {
+  height: 40px;
+}
+
+.hamburger-menu {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+.menu-dropdown {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 16px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.menu-dropdown a {
+  padding: 10px 16px;
+  color: black;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+
+.menu-dropdown a:last-child {
+  border-bottom: none;
+}
+
+.menu-dropdown.show-menu {
+  display: flex;
 }
