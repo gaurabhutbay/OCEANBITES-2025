@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import db from "./firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Mainpage from "./Mainpage";
 import About from "./About";
+import ProductDetail from './components/ProductDetail';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -29,28 +30,28 @@ function App() {
 
   const groupedProducts = {
     Fishies: [
-      { name: "Fish Cutlet", price: 20, image: require("./assets/fish_cutlet.jpeg") },
-      { name: "Fish Momos", price: 15, image: require("./assets/fish_momos.jpeg") },
-      { name: "Fish Somas", price: 15, image: require("./assets/fish_somas.jpeg") },
-      { name: "Fish 65", price: 20, image: require("./assets/fish_65.jpeg") },
-      { name: "Fish Pickle 100g", price: 50, image: require("./assets/fish_pickle.jpeg") }
+      { id: "fish-cutlet", name: "Fish Cutlet", price: 20, image: require("./assets/fish_cutlet.jpeg") },
+      { id: "fish-momos", name: "Fish Momos", price: 15, image: require("./assets/fish_momos.jpeg") },
+      { id: "fish-somas", name: "Fish Somas", price: 15, image: require("./assets/fish_somas.jpeg") },
+      { id: "fish-65", name: "Fish 65", price: 20, image: require("./assets/fish_65.jpeg") },
+      { id: "fish-pickle", name: "Fish Pickle 100g", price: 50, image: require("./assets/fish_pickle.jpeg") }
     ],
     Shrimpies: [
-      { name: "Shrimp Shawarma", price: 60, image: require("./assets/shrimp_shawarma.jpeg") },
-      { name: "Shrimp Cutlet", price: 25, image: require("./assets/shrimp_cutlet.jpeg") },
-      { name: "Shrimp Pickle 100g", price: 50, image: require("./assets/shrimp_pickle.jpeg") },
-      { name: "Shrimp", price: 50, image: require("./assets/shrimp_pickle.jpeg") }
+      { id: "shrimp-shawarma", name: "Shrimp Shawarma", price: 60, image: require("./assets/shrimp_shawarma.jpeg") },
+      { id: "shrimp-cutlet", name: "Shrimp Cutlet", price: 25, image: require("./assets/shrimp_cutlet.jpeg") },
+      { id: "shrimp-pickle", name: "Shrimp Pickle 100g", price: 50, image: require("./assets/shrimp_pickle.jpeg") },
+      { id: "shrimp", name: "Shrimp Burger", price: 60, image: require("./assets/shrimp_burger.jpeg") }
     ],
     Juices: [
-      { name: "Blue Curacao Mojito", price: 40, image: require("./assets/blue.jpeg") },
-      { name: "Green Apple Mojito", price: 40, image: require("./assets/green.jpeg") },
-      { name: "Strawberry Mojito", price: 40, image: require("./assets/berry.jpeg") }
+      { id: "mojito-blue", name: "Blue Curacao Mojito", price: 40, image: require("./assets/blue.jpeg") },
+      { id: "mojito-green", name: "Green Apple Mojito", price: 40, image: require("./assets/green.jpeg") },
+      { id: "mojito-strawberry", name: "Strawberry Mojito", price: 40, image: require("./assets/berry.jpeg") }
     ],
     Bowls: [
-      { name: "Fish Fried Rice", price: 120, image: require("./assets/fish_rice.jpeg") },
-      { name: "Shrimp Fried Rice", price: 140, image: require("./assets/shrimp_rice.jpeg") },
-      { name: "Veg Fried Rice", price: 90, image: require("./assets/veg_rice.jpeg") },
-      { name: "Special Mix Rice", price: 130, image: require("./assets/mix_rice.jpeg") }
+      { id: "fish-rice", name: "Fish Fried Rice", price: 120, image: require("./assets/fish_rice.jpeg") },
+      { id: "shrimp-rice", name: "Shrimp Fried Rice", price: 140, image: require("./assets/shrimp_rice.jpeg") },
+      { id: "veg-rice", name: "Veg Fried Rice", price: 90, image: require("./assets/veg_rice.jpeg") },
+      { id: "mix-rice", name: "Special Mix Rice", price: 130, image: require("./assets/mix_rice.jpeg") }
     ]
   };
 
@@ -137,34 +138,34 @@ function App() {
   };
 
   return (
-    <Router>
-  
-
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Mainpage
-              groupedProducts={groupedProducts}
-              addToCart={addToCart}
-              cart={cart}
-              decrementQuantity={decrementQuantity}
-              incrementQuantity={incrementQuantity}
-              getTotal={getTotal}
-              name={name}
-              setName={setName}
-              phone={phone}
-              setPhone={setPhone}
-              address={address}
-              setAddress={setAddress}
-              handlePayment={handlePayment}
-              showPopup={showPopup}
-            />
-          }
-        />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <Mainpage
+            groupedProducts={groupedProducts}
+            addToCart={addToCart}
+            cart={cart}
+            decrementQuantity={decrementQuantity}
+            incrementQuantity={incrementQuantity}
+            getTotal={getTotal}
+            name={name}
+            setName={setName}
+            phone={phone}
+            setPhone={setPhone}
+            address={address}
+            setAddress={setAddress}
+            handlePayment={handlePayment}
+            showPopup={showPopup}
+          />
+        }
+      />
+      <Route path="/about" element={<About />} />
+      <Route
+        path="/product/:productId"
+        element={<ProductDetail groupedProducts={groupedProducts} addToCart={addToCart} />}
+      />
+    </Routes>
   );
 }
 
