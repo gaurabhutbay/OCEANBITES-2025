@@ -45,9 +45,9 @@ function App() {
     Juices: [
       { id: "mojito-blue", name: "Blue Curacao Mojito", price: 40, image: require("./assets/blue.jpeg") },
       { id: "mojito-green", name: "Green Apple Mojito", price: 40, image: require("./assets/green.jpeg") },
-      { id: "mojito-watermelon", name: "Watermelon Mojito", price: 40, image: require("./assets/berry.jpeg") },
-      { id: "mojito-litchi", name: "Litchi Mojito", price: 40, image: require("./assets/berry.jpeg") },
-      { id: "mojito-fusion", name: "OB Fusion Mojito", price: 50, image: require("./assets/berry.jpeg") }
+      { id: "mojito-watermelon", name: "Watermelon Mojito", price: 40, image: require("./assets/watermelon.jpeg") },
+      { id: "mojito-litchi", name: "Litchi Mojito", price: 40, image: require("./assets/litchi.jpeg") },
+      { id: "mojito-fusion", name: "OB Fusion Mojito", price: 50, image: require("./assets/fusion.jpeg") }
     ],
     Bowls: [
       { id: "fish-rice", name: "Fish Fried Rice", price: 120, image: require("./assets/fish_rice.jpeg") },
