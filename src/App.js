@@ -30,22 +30,24 @@ function App() {
 
   const groupedProducts = {
     Fishies: [
-      { id: "fish-cutlet", name: "Fish Cutlet", price: 20, image: require("./assets/fish_cutlet.jpeg") },
+      { id: "fish-cutlet", name: "Fish Cutlet", price: 15, image: require("./assets/fish_cutlet.jpeg") },
       { id: "fish-momos", name: "Fish Momos", price: 15, image: require("./assets/fish_momos.jpeg") },
       { id: "fish-somas", name: "Fish Somas", price: 15, image: require("./assets/fish_somas.jpeg") },
-      { id: "fish-65", name: "Fish 65", price: 20, image: require("./assets/fish_65.jpeg") },
-      { id: "fish-pickle", name: "Fish Pickle 100g", price: 50, image: require("./assets/fish_pickle.jpeg") }
+      { id: "fish-65", name: "Fish 65 100g", price: 60, image: require("./assets/fish_65.jpeg") },
+      { id: "fish-pickle", name: "Fish Pickle 100g", price: 100, image: require("./assets/fish_pickle.jpeg") }
     ],
     Shrimpies: [
       { id: "shrimp-shawarma", name: "Shrimp Shawarma", price: 60, image: require("./assets/shrimp_shawarma.jpeg") },
-      { id: "shrimp-cutlet", name: "Shrimp Cutlet", price: 25, image: require("./assets/shrimp_cutlet.jpeg") },
-      { id: "shrimp-pickle", name: "Shrimp Pickle 100g", price: 50, image: require("./assets/shrimp_pickle.jpeg") },
-      { id: "shrimp", name: "Shrimp Burger", price: 60, image: require("./assets/shrimp_burger.jpeg") }
+      { id: "shrimp-cutlet", name: "Shrimp Cutlet", price: 20, image: require("./assets/shrimp_cutlet.jpeg") },
+      { id: "shrimp-pickle", name: "Shrimp Pickle 100g", price: 100, image: require("./assets/shrimp_pickle.jpeg") },
+      { id: "shrimp-burger", name: "Shrimp Burger", price: 60, image: require("./assets/shrimp_burger.jpeg") }
     ],
     Juices: [
       { id: "mojito-blue", name: "Blue Curacao Mojito", price: 40, image: require("./assets/blue.jpeg") },
       { id: "mojito-green", name: "Green Apple Mojito", price: 40, image: require("./assets/green.jpeg") },
-      { id: "mojito-strawberry", name: "Strawberry Mojito", price: 40, image: require("./assets/berry.jpeg") }
+      { id: "mojito-watermelon", name: "Watermelon Mojito", price: 40, image: require("./assets/berry.jpeg") },
+      { id: "mojito-litchi", name: "Litchi Mojito", price: 40, image: require("./assets/berry.jpeg") },
+      { id: "mojito-fusion", name: "OB Fusion Mojito", price: 50, image: require("./assets/berry.jpeg") }
     ],
     Bowls: [
       { id: "fish-rice", name: "Fish Fried Rice", price: 120, image: require("./assets/fish_rice.jpeg") },

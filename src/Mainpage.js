@@ -119,7 +119,7 @@ function Mainpage({
         <div className="cart-section" id="cart-section">
           <h2>Your Cart</h2>
           {cart.length === 0 ? (
-            <p className="text-gray-600">Cart is empty.</p>
+            <p className="text-gray-600">Cart Is Empty.</p>
           ) : (
             cart.map((item, index) => (
               <div key={index} className="cart-item">

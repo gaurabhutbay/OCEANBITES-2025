@@ -12,7 +12,7 @@ body {
 
 /* 🧱 App container */
 .app-container {
-  max-width: 100vw;
+  max-width: 100%;
   margin: 0 auto;
   padding: 17px;
   background-color: rgba(255, 255, 255, 0.2);
@@ -39,14 +39,14 @@ h2 {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .category-heading {
-  background: rgba(230, 250, 255, 0.5);
+  background: rgba(163, 237, 255, 0.658);
   padding: 10px 16px;
-  color: white;
+  color: rgb(255, 255, 255);
   border-radius: 8px;
   font-size: 22px;
   font-weight: bold;
@@ -125,7 +125,7 @@ h2 {
 
 .product-card img {
   width: 100%;
-  height: 140px;
+  height: 120px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -232,7 +232,7 @@ button:hover {
 }
 
 /* 📱 Responsive tweaks */
-@media (max-width: 480px) {
+@media (max-width: 100%) {
   .brand-heading {
     padding: 8px 14px;
     flex-direction: column;
